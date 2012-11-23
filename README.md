@@ -56,9 +56,11 @@ CoffeeScript (1.4 or newer)
 
 ## Browser Compatibility
 
-Chrome
-Firefox
-Internet Explorer 8+
+* Chrome
+
+* Firefox
+
+* Internet Explorer 8+
 
 If you have a mac, please test Safari and get back to me if things aren't working.
 
