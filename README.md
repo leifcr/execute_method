@@ -25,27 +25,27 @@ Animal = {
        return null unless should_i_do_it 
        stuff_todo
 
-ExecuteMethod.executeMethodByFunctionName("type_of_animals", AnimalTest)             
+ExecuteMethod.executeMethodByFunctionName("type_of_animals", Animal)             
 # returns "cows"
-ExecuteMethod.executeMethodByFunctionName("candostuff()", AnimalTest)                
+ExecuteMethod.executeMethodByFunctionName("candostuff()", Animal)                
 # returns "yes"
-ExecuteMethod.executeMethodByFunctionName("cows.first.name", AnimalTest)             
+ExecuteMethod.executeMethodByFunctionName("cows.first.name", Animal)             
 # returns  "george"
-ExecuteMethod.executeMethodByFunctionName("cows.first.dostuff()", AnimalTest)        
+ExecuteMethod.executeMethodByFunctionName("cows.first.dostuff()", Animal)        
 # returns  "eat"
-ExecuteMethod.executeMethodByFunctionName("cows.second.name", AnimalTest)            
+ExecuteMethod.executeMethodByFunctionName("cows.second.name", Animal)            
 # returns "peter"
-ual(ExecuteMethod.executeMethodByFunctionName("cows.second.dostuff()", AnimalTest)   
+ual(ExecuteMethod.executeMethodByFunctionName("cows.second.dostuff()", Animal)   
 # returns  {eat: "grass", sleep:"standing"}
-ExecuteMethod.executeMethodByFunctionName("cows.second.dostuff().eat", AnimalTest)   
+ExecuteMethod.executeMethodByFunctionName("cows.second.dostuff().eat", Animal)   
 # returns  "grass"
-ExecuteMethod.executeMethodByFunctionName("cows.second.dostuff().sleep", AnimalTest) 
+ExecuteMethod.executeMethodByFunctionName("cows.second.dostuff().sleep", Animal) 
 # returns "standing"
-ExecuteMethod.executeMethodByFunctionName("cows.third.name", AnimalTest)             
+ExecuteMethod.executeMethodByFunctionName("cows.third.name", Animal)             
 # returns "ole")
-ExecuteMethod.executeMethodByFunctionName("cows.third.dostuff(\"run\", false)", AnimalTest) 
+ExecuteMethod.executeMethodByFunctionName("cows.third.dostuff(\"run\", false)", Animal) 
 # returns null
-ExecuteMethod.executeMethodByFunctionName("cows.third.dostuff(\"run\", true)", AnimalTest)  
+ExecuteMethod.executeMethodByFunctionName("cows.third.dostuff(\"run\", true)", Animal)  
 # returns "run"
 
 ```
