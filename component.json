@@ -8,6 +8,6 @@
   "development": {},
   "main": "dist/execute_method.js",
   "scripts": [
-    "dist/execute_method-min.js"
+    "dist/execute_method.min.js"
   ]
 }
