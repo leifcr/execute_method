@@ -42,24 +42,6 @@ Animal = {
   }
 };
 
-Animal = {
-  type_of_animals: "cows"
-  candostuff: ->
-    "yes"
-  cows:
-   first:
-    name: "george"
-    dostuff: -> "eat"
-   second:
-    name: "peter"
-    dostuff: ->
-      {eat: "grass", sleep:"standing"}
-   third:
-     name: "ole"
-     dostuff: (stuff_todo, should_i_do_it) ->
-       return null unless should_i_do_it
-       stuff_todo
-
 ExecuteMethod.executeMethodByFunctionName("type_of_animals", Animal)
 // -> "cows"
 ExecuteMethod.executeMethodByFunctionName("candostuff()", Animal)
