@@ -8,7 +8,7 @@
     "url": "git@github.com:leifcr/execute_method.git"
   },
   "author": "Leif Ringstad",
-  "license": "FreeBSD",
+  "license": "BSD-2-Clause-FreeBSD",
   "dependencies": {},
   "devDependencies": {
     "grunt": "~0.4.5",
