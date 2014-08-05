@@ -1,0 +1,27 @@
+{
+  "name": "execute_method",
+  "version": "1.0.1",
+  "homepage": "https://github.com/leifcr/execute_method",
+  "authors": [
+    "Leif Ringstad <leif@bitelm.com>"
+  ],
+  "description": "Execute a function or get a property on an object or instance from a given string in javascript",
+  "main": "dist/execute_method.js",
+  "keywords": [
+    "js",
+    "javascript"
+  ],
+  "ignore": [
+    "**/.*",
+    "dev",
+    "node_modules",
+    "bower_components",
+    "test",
+    "examples",
+    "third_party",
+    "src"
+  ],
+  "license": "MIT",
+  "dependencies": {
+  }
+}

@@ -1,4 +1,4 @@
-# Execute Method 
+# Execute Method
 
 *execute_method.coffee* is a coffeescript that makes it possible to execute a method or get a property from a given string
 
@@ -22,30 +22,30 @@ Animal = {
    third:
      name: "ole"
      dostuff: (stuff_todo, should_i_do_it) ->
-       return null unless should_i_do_it 
+       return null unless should_i_do_it
        stuff_todo
 
-ExecuteMethod.executeMethodByFunctionName("type_of_animals", Animal)             
+ExecuteMethod.executeMethodByFunctionName("type_of_animals", Animal)
 # returns "cows"
-ExecuteMethod.executeMethodByFunctionName("candostuff()", Animal)                
+ExecuteMethod.executeMethodByFunctionName("candostuff()", Animal)
 # returns "yes"
-ExecuteMethod.executeMethodByFunctionName("cows.first.name", Animal)             
+ExecuteMethod.executeMethodByFunctionName("cows.first.name", Animal)
 # returns  "george"
-ExecuteMethod.executeMethodByFunctionName("cows.first.dostuff()", Animal)        
+ExecuteMethod.executeMethodByFunctionName("cows.first.dostuff()", Animal)
 # returns  "eat"
-ExecuteMethod.executeMethodByFunctionName("cows.second.name", Animal)            
+ExecuteMethod.executeMethodByFunctionName("cows.second.name", Animal)
 # returns "peter"
-ual(ExecuteMethod.executeMethodByFunctionName("cows.second.dostuff()", Animal)   
+ual(ExecuteMethod.executeMethodByFunctionName("cows.second.dostuff()", Animal)
 # returns  {eat: "grass", sleep:"standing"}
-ExecuteMethod.executeMethodByFunctionName("cows.second.dostuff().eat", Animal)   
+ExecuteMethod.executeMethodByFunctionName("cows.second.dostuff().eat", Animal)
 # returns  "grass"
-ExecuteMethod.executeMethodByFunctionName("cows.second.dostuff().sleep", Animal) 
+ExecuteMethod.executeMethodByFunctionName("cows.second.dostuff().sleep", Animal)
 # returns "standing"
-ExecuteMethod.executeMethodByFunctionName("cows.third.name", Animal)             
+ExecuteMethod.executeMethodByFunctionName("cows.third.name", Animal)
 # returns "ole")
-ExecuteMethod.executeMethodByFunctionName("cows.third.dostuff(\"run\", false)", Animal) 
+ExecuteMethod.executeMethodByFunctionName("cows.third.dostuff(\"run\", false)", Animal)
 # returns null
-ExecuteMethod.executeMethodByFunctionName("cows.third.dostuff(\"run\", true)", Animal)  
+ExecuteMethod.executeMethodByFunctionName("cows.third.dostuff(\"run\", true)", Animal)
 # returns "run"
 
 ```
@@ -68,4 +68,4 @@ If you have a mac, please test Safari and get back to me if things aren't workin
 
 This work is under the FreeBSD License.
 
-As this is *free* for use in other products, please consider sending me a gadget if you charge your customers, or a license for the software/service you use it in. 
+As this is *free* for use in other products, please consider sending me a gadget if you charge your customers, or a license for the software/service you use it in.
