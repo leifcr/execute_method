@@ -8,13 +8,10 @@ module.exports = (grunt) ->
 
     banner: grunt.file.read("./src/copy.js").replace(/@VERSION/, pkg.version).replace(/@DATE/, grunt.template.today("yyyy-mm-dd")) + "\n"
 
-    clean: ["dist", "dev", "tmp"]
+    clean: ["dist", "build", "tmp"]
 
     coffeelint:
       app: ['src/**/*.coffee']
-      tests:
-        files:
-          src: ['src/test/*.coffee']
       options:
         force:true
         max_line_length:
@@ -25,16 +22,18 @@ module.exports = (grunt) ->
       options:
         banner: "<%= banner %>"
         separator: ";\n"
+        stripBanners: true
       dist:
-        dest: 'dist/<%= package_name %>-<%= pkg.version %>.js'
+        src: ["build/execute_method.js"]
+        dest: 'dist/<%= package_name %>.js'
 
     uglify:
       options:
         banner: "<%= banner %>"
         report: "min"
       dist:
-        dest: 'dist/<%= package_name %>-<%= pkg.version %>.min.js'
-        src: ['dist/<%= package_name %>-<%= pkg.version %>.js']
+        dest: 'dist/<%= package_name %>.min.js'
+        src: ['dist/<%= package_name %>.js']
 
     watch:
       all:
@@ -42,21 +41,28 @@ module.exports = (grunt) ->
           "src/*.coffee"
           "src/test/*.coffee"
         ]
-        tasks: ["coffeelint", "coffee:compile_dev", "coffee:compile_test"]
-        # tasks: ["coffeelint", "coffee:compile_dev", "coffee:compile_test", "qunit"]
+        tasks: ["coffeelint", "coffee:compile_build", "coffee:compile_test"]
+        # tasks: ["coffeelint", "coffee:compile_build", "coffee:compile_test", "qunit"]
 
     qunit:
       options:
-        phantomPath: "/usr/local/bin/phantomjs"
-      files: ['test/**/*.html']
+        # phantomPath: "/usr/local/bin/phantomjs"
+        coverage: {
+          src: "build/execute_method.js",
+          instrumentedFiles: "temp/",
+          htmlReport: "build/report/coverage",
+          lcovReport: "build/report/lcov",
+          linesThresholdPct: 95
+        }
+      all: ['test/**/*.html']
 
     coffee:
-      compile_dev:
+      compile_build:
         options:
           bare: true
           sourceMap: true
         files:
-          'dev/<%= package_name %>.js' : ['src/*.coffee']
+          'build/<%= package_name %>.js' : ['src/*.coffee']
 
       compile_dist:
         options:
@@ -88,9 +94,10 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-watch'
   grunt.loadNpmTasks 'grunt-contrib-compress'
   grunt.loadNpmTasks 'grunt-contrib-clean'
-  grunt.loadNpmTasks 'grunt-croc-qunit'
+  # grunt.loadNpmTasks 'grunt-croc-qunit'
+  grunt.loadNpmTasks 'grunt-qunit-istanbul'
   grunt.loadNpmTasks 'grunt-coffeelint'
 
-  grunt.registerTask('default', ['clean', 'coffeelint', 'coffee', 'qunit', 'concat', 'uglify', 'compress'])
-  grunt.registerTask('build', ['clean', 'coffeelint', 'coffee', 'concat', 'uglify', 'compress'])
+  grunt.registerTask('default', ['clean', 'coffeelint', 'coffee', 'qunit', 'concat', 'uglify'])
+  grunt.registerTask('build', ['clean', 'coffeelint', 'coffee', 'concat', 'uglify'])
   return
