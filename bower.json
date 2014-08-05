@@ -21,7 +21,7 @@
     "third_party",
     "src"
   ],
-  "license": "MIT",
+  "license": "FreeBSD",
   "dependencies": {
   }
 }
