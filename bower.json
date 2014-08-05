@@ -18,7 +18,7 @@
     "test",
     "src",
     "coffeelint.json",
-    "Gruntfile.coffee"
+    "Gruntfile.coffee",
     "component.json",
     "*.sublime-project"
   ],
