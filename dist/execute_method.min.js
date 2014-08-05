@@ -1,5 +1,5 @@
 /*!
-  execute_method 1.0.1
+  execute_method 1.0.2
 
   Copyright (c) 2012-2014, Leif Ringstad
   All rights reserved.

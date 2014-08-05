@@ -2,7 +2,7 @@
   "name": "execute_method",
   "repo": "leifcr/execute_method",
   "description": "Execute a function or get a property on an object or instance from a given string in javascript.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "keywords": ["javascript"],
   "dependencies": {},
   "development": {},
