@@ -6,7 +6,42 @@ It attaches ExecuteMethod to the window to make it easier to use across librarie
 
 ## Usage
 
-```coffeescript
+```javascript
+var Animal;
+
+Animal = {
+  type_of_animals: "cows",
+  candostuff: function() {
+    return "yes";
+  },
+  cows: {
+    first: {
+      name: "george",
+      dostuff: function() {
+        return "eat";
+      }
+    },
+    second: {
+      name: "peter",
+      dostuff: function() {
+        return {
+          eat: "grass",
+          sleep: "standing"
+        };
+      }
+    },
+    third: {
+      name: "ole",
+      dostuff: function(stuff_todo, should_i_do_it) {
+        if (!should_i_do_it) {
+          return null;
+        }
+        return stuff_todo;
+      }
+    }
+  }
+};
+
 Animal = {
   type_of_animals: "cows"
   candostuff: ->
@@ -26,27 +61,27 @@ Animal = {
        stuff_todo
 
 ExecuteMethod.executeMethodByFunctionName("type_of_animals", Animal)
-# returns "cows"
+// -> "cows"
 ExecuteMethod.executeMethodByFunctionName("candostuff()", Animal)
-# returns "yes"
+// -> "yes"
 ExecuteMethod.executeMethodByFunctionName("cows.first.name", Animal)
-# returns  "george"
+// ->  "george"
 ExecuteMethod.executeMethodByFunctionName("cows.first.dostuff()", Animal)
-# returns  "eat"
+// ->  "eat"
 ExecuteMethod.executeMethodByFunctionName("cows.second.name", Animal)
-# returns "peter"
-ual(ExecuteMethod.executeMethodByFunctionName("cows.second.dostuff()", Animal)
-# returns  {eat: "grass", sleep:"standing"}
+// -> "peter"
+ExecuteMethod.executeMethodByFunctionName("cows.second.dostuff()", Animal)
+// -> {eat: "grass", sleep:"standing"}
 ExecuteMethod.executeMethodByFunctionName("cows.second.dostuff().eat", Animal)
-# returns  "grass"
+// -> "grass"
 ExecuteMethod.executeMethodByFunctionName("cows.second.dostuff().sleep", Animal)
-# returns "standing"
+// -> "standing"
 ExecuteMethod.executeMethodByFunctionName("cows.third.name", Animal)
-# returns "ole")
+// -> "ole")
 ExecuteMethod.executeMethodByFunctionName("cows.third.dostuff(\"run\", false)", Animal)
-# returns null
+// -> null
 ExecuteMethod.executeMethodByFunctionName("cows.third.dostuff(\"run\", true)", Animal)
-# returns "run"
+// -> "run"
 
 ```
 
