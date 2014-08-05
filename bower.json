@@ -3,10 +3,10 @@
   "version": "1.0.1",
   "homepage": "https://github.com/leifcr/execute_method",
   "authors": [
-    "Leif Ringstad <leif@bitelm.com>"
+    { "name": "Leif Ringstad", "email": "leifcr@gmail.com"," homepage": "http://bitelm.com" }
   ],
   "description": "Execute a function or get a property on an object or instance from a given string in javascript",
-  "main": "dist/execute_method.js",
+  "main": ["dist/execute_method.js"],
   "keywords": [
     "js",
     "javascript"
@@ -14,14 +14,19 @@
   "ignore": [
     "**/.*",
     "dev",
-    "node_modules",
-    "bower_components",
+    "build",
     "test",
-    "examples",
-    "third_party",
-    "src"
+    "src",
+    "coffeelint.json",
+    "Gruntfile.coffee"
+    "component.json",
+    "*.sublime-project"
   ],
-  "license": "FreeBSD",
+  "license": "BSD-2-Clause-FreeBSD",
   "dependencies": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/leifcr/execute_method.git"
   }
 }
