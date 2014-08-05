@@ -67,10 +67,6 @@ ExecuteMethod.executeMethodByFunctionName("cows.third.dostuff(\"run\", true)", A
 
 ```
 
-## Requirements
-
-CoffeeScript (1.4 or newer)
-
 ## Browser Compatibility
 
 * Chrome
@@ -79,10 +75,14 @@ CoffeeScript (1.4 or newer)
 
 * Internet Explorer 8+
 
-If you have a mac, please test Safari and get back to me if things aren't working.
+* Safari
+
+## Development Requirements
+
+CoffeeScript (1.4 or newer)
 
 ## License
 
-This work is under the FreeBSD License.
+This work is under the BSD-2-Clause-FreeBSD License.
 
 As this is *free* for use in other products, please consider sending me a gadget if you charge your customers, or a license for the software/service you use it in.
