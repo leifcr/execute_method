@@ -1,10 +1,8 @@
 ###
 # Execute Method
-# (c) 2012 Leif Ringstad
-# Licensed under the freeBSD license (see LICENSE.txt for details)
+# (c) 2012-2014 Leif Ringstad
 #
 # Source: http://github.com/leifcr/execute_method
-# v 1.0.0
 ###
 
 ExecuteMethod =
@@ -29,7 +27,7 @@ ExecuteMethod =
         params = []
       func = str.substring(0, str.indexOf ("\(") )
       isfunc = true
-    else 
+    else
       func = str
       params = null
       isfunc = false
@@ -55,8 +53,8 @@ ExecuteMethod =
 
   regexIndexOf: (string, regex, startpos) ->
     # console.log "regexIndexOf"
-    indexOf = string.substring(startpos || 0).search(regex);
-    if (indexOf >= 0) then (indexOf + (startpos || 0)) else indexOf;
+    indexOf = string.substring(startpos || 0).search(regex)
+    if (indexOf >= 0) then (indexOf + (startpos || 0)) else indexOf
 
   typecastParameter: (param) ->
     param = param.trim()
@@ -67,7 +65,7 @@ ExecuteMethod =
       return parseInt(param)
     else if param.search(/^\d+\.\d+$/) == 0
       return parseFloat(param)
-    else if param == "false" 
+    else if param == "false"
       return false
     else if param == "true"
       return true
@@ -81,19 +79,25 @@ ExecuteMethod =
     context[property]
 
   ###
-  # @param {String} Provide a string on what to execute (e.g. this.is.something(true).to_run() or myFunction().property or myFunction())
+  # @param {String} Provide a string on what to execute (e.g. this.is.something(true).to_run()
+  #                 or myFunction().property or myFunction())
   # @param {Object} Provide a object to run the string provided on
-  # @param {Object} Provide an object that points to the "this" pointer which 
+  # @param {Object} Provide an object that points to the "this" pointer which
   ###
   executeMethodByFunctionName: (str, context) ->
     func_data = ExecuteMethod.getFunctionsAndProperties(str)
-    # since it's possible to chain functions and/or properties, and it's not possible to chain properly do a loop
+    # since it's possible to chain functions and/or properties, and it's not possible to
+    # chain properly do a loop
     i = 0
     current_context = context
     current_val = null
     while i < func_data.length
       if (func_data[i]["isfunc"] == true)
-        current_context = ExecuteMethod.executeSingleFunction(func_data[i]["func"], func_data[i]["params"], current_context, context)
+        current_context = ExecuteMethod.executeSingleFunction(
+          func_data[i]["func"],
+          func_data[i]["params"],
+          current_context, context
+          )
       else
         current_context = ExecuteMethod.getSingleProperty(func_data[i]["func"], current_context)
       i++
@@ -101,7 +105,9 @@ ExecuteMethod =
 
 if (!String.prototype.trim)
   String.prototype.trim = ->
-    this.replace(/^\s+|\s+$/g,'');
+    this.replace(/^\s+|\s+$/g,'')
 
-if (window.ExecuteMethod == "undefined" || window.ExecuteMethod == null || window.ExecuteMethod == undefined)
+if (window.ExecuteMethod == "undefined" or
+    window.ExecuteMethod == null or
+    window.ExecuteMethod == undefined)
   window.ExecuteMethod = ExecuteMethod

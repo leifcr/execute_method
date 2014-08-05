@@ -20,23 +20,23 @@
 # QUnit.jsDump.HTML = false;
 module 'single functions'
   # expect(0)
-  
+
 test 'the string should be trimmed', 1, ->
   str = " something ! "
   equal(str.trim(), "something !")
 
-test 'string should typecast to boolean from string', 2, -> 
+test 'string should typecast to boolean from string', 2, ->
   # this test will fail, as this *isn't* how to append to an array
   equal(ExecuteMethod.typecastParameter("false"), false)
   equal(ExecuteMethod.typecastParameter("true"), true)
 
-test 'string should typecast to integer from string', 3, -> 
+test 'string should typecast to integer from string', 3, ->
   # this test will fail, as this *isn't* how to append to an array
   equal(ExecuteMethod.typecastParameter("1"), 1)
   equal(ExecuteMethod.typecastParameter("0"), 0)
   equal(ExecuteMethod.typecastParameter("5934589348534"), 5934589348534)
 
-test 'string should typecast to float from string', 3, -> 
+test 'string should typecast to float from string', 3, ->
   # this test will fail, as this *isn't* how to append to an array
   equal(ExecuteMethod.typecastParameter("1.1"), 1.1)
   equal(ExecuteMethod.typecastParameter("0.53"), 0.53)
@@ -44,11 +44,20 @@ test 'string should typecast to float from string', 3, ->
 
 test 'string should return the string when typcasting', 2, ->
   # this test will fail, as this *isn't* how to append to an array
-  equal(ExecuteMethod.typecastParameter("This is not a number or bool or float"), "This is not a number or bool or float")
-  equal(ExecuteMethod.typecastParameter("\"super \"word inside\" dash\""), "super \"word inside\" dash")
+  equal(ExecuteMethod.typecastParameter(
+    "This is not a number or bool or float"),
+    "This is not a number or bool or float"
+    )
+  equal(ExecuteMethod.typecastParameter(
+    "\"super \"word inside\" dash\""),
+    "super \"word inside\" dash"
+    )
 
 test 'parameters should be split and typecasted', 1, ->
-  deepEqual(ExecuteMethod.splitAndTypeCastParameters("5, true, apples, 3.14"), [5, true, "apples", 3.14])
+  deepEqual(ExecuteMethod.splitAndTypeCastParameters(
+    "5, true, apples, 3.14"),
+    [5, true, "apples", 3.14]
+    )
 
 test 'test if it is a function', 3, ->
   equal(ExecuteMethod.isFunction("property"), false)
@@ -56,13 +65,25 @@ test 'test if it is a function', 3, ->
   equal(ExecuteMethod.isFunction("myMethodWithParameters(false, \"superb\")"), true)
 
 test 'get function and parameters', 5, ->
-  deepEqual(ExecuteMethod.getFunctionAndParameters("property"), {func: "property", params: null, isfunc: false})
-  deepEqual(ExecuteMethod.getFunctionAndParameters("myMethod()"), {func: "myMethod", params: [], isfunc: true})
-  deepEqual(ExecuteMethod.getFunctionAndParameters("myMethod(false)"), {func: "myMethod", params: [false], isfunc: true})
-  deepEqual(ExecuteMethod.getFunctionAndParameters("myMethod(false, \"superb\")"), {func: "myMethod", params: [false, "superb"], isfunc: true})
-  deepEqual(ExecuteMethod.getFunctionAndParameters("myMethod(false, \"superb\", 3.14, 42)"), {func: "myMethod", params: [false, "superb", 3.14, 42], isfunc: true})
+  deepEqual(ExecuteMethod.getFunctionAndParameters(
+    "property"),
+    {func: "property", params: null, isfunc: false}
+    )
+  deepEqual(ExecuteMethod.getFunctionAndParameters(
+    "myMethod()"), {func: "myMethod", params: [], isfunc: true})
+  deepEqual(ExecuteMethod.getFunctionAndParameters(
+    "myMethod(false)"),
+    {func: "myMethod", params: [false], isfunc: true})
+  deepEqual(ExecuteMethod.getFunctionAndParameters(
+    "myMethod(false, \"superb\")"),
+    {func: "myMethod", params: [false, "superb"], isfunc: true}
+    )
+  deepEqual(ExecuteMethod.getFunctionAndParameters(
+    "myMethod(false, \"superb\", 3.14, 42)"),
+    {func: "myMethod", params: [false, "superb", 3.14, 42], isfunc: true}
+    )
 
-  
+
 module 'test execution', {
   setup: ->
     window.AnimalTest = {
@@ -70,18 +91,18 @@ module 'test execution', {
       candostuff: ->
         "yes"
       cows:
-       first:
-        name: "george"
-        dostuff: -> "eat"
-       second:
-        name: "peter"
-        dostuff: ->
-          {eat: "grass", sleep:"standing"}
-       third:
-         name: "ole"
-         dostuff: (stufftodo, shouldidoit) ->
-           return null unless shouldidoit 
-           stufftodo
+        first:
+          name: "george"
+          dostuff: -> "eat"
+        second:
+          name: "peter"
+          dostuff: ->
+            {eat: "grass", sleep:"standing"}
+        third:
+          name: "ole"
+          dostuff: (stufftodo, shouldidoit) ->
+            return null unless shouldidoit
+            stufftodo
     }
 }
 
@@ -97,9 +118,18 @@ test 'executeMethodByFunctionName', 11, ->
   equal(ExecuteMethod.executeMethodByFunctionName("cows.first.name", AnimalTest), "george")
   equal(ExecuteMethod.executeMethodByFunctionName("cows.first.dostuff()", AnimalTest), "eat")
   equal(ExecuteMethod.executeMethodByFunctionName("cows.second.name", AnimalTest), "peter")
-  deepEqual(ExecuteMethod.executeMethodByFunctionName("cows.second.dostuff()", AnimalTest), {eat: "grass", sleep:"standing"})
-  equal(ExecuteMethod.executeMethodByFunctionName("cows.second.dostuff().eat", AnimalTest), "grass")
-  equal(ExecuteMethod.executeMethodByFunctionName("cows.second.dostuff().sleep", AnimalTest), "standing")
+  deepEqual(ExecuteMethod.executeMethodByFunctionName("cows.second.dostuff()", AnimalTest),
+    {eat: "grass", sleep:"standing"}
+    )
+  equal(ExecuteMethod.executeMethodByFunctionName("cows.second.dostuff().eat", AnimalTest),
+    "grass"
+    )
+  equal(ExecuteMethod.executeMethodByFunctionName("cows.second.dostuff().sleep", AnimalTest),
+    "standing"
+    )
   equal(ExecuteMethod.executeMethodByFunctionName("cows.third.name", AnimalTest), "ole")
-  equal(ExecuteMethod.executeMethodByFunctionName("cows.third.dostuff(\"run\", false)", AnimalTest), null)
-  equal(ExecuteMethod.executeMethodByFunctionName("cows.third.dostuff(\"run\", true)", AnimalTest), "run")
+  equal(ExecuteMethod.executeMethodByFunctionName("cows.third.dostuff(\"run\", false)", AnimalTest),
+    null)
+  equal(ExecuteMethod.executeMethodByFunctionName(
+    "cows.third.dostuff(\"run\", true)",
+    AnimalTest), "run")
