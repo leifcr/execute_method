@@ -8,7 +8,7 @@ module.exports = (grunt) ->
 
     banner: grunt.file.read("./src/copy.js").replace(/@VERSION/, pkg.version).replace(/@DATE/, grunt.template.today("yyyy-mm-dd")) + "\n"
 
-    clean: ["dist"]
+    clean: ["dist", "dev", "tmp"]
 
     coffeelint:
       app: ['src/**/*.coffee']
