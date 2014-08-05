@@ -21,6 +21,6 @@
     "grunt-contrib-clean": "~0.6.0",
     "grunt-coffeelint": "~0.0.13",
     "grunt-croc-qunit": "~0.3.0",
-    "qunit": "~0.7.2"
+    "qunitjs": "~1.14.0"
   }
 }
